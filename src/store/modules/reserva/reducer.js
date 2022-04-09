@@ -16,7 +16,18 @@ export default function reserva(state = [], action) {
                     });
                 }
 
+            });
+
+        case 'REMOVE_RESERVA':
+            return produce(state, draft => {
+                const viagemIndex = draft.findIndex(viagem => viagem.id === action.id);
+
+
+                if (viagemIndex >= 0) {
+                    draft.splice(viagemIndex, 1);
+                }
             })
+
         default:
             return state;
     }
