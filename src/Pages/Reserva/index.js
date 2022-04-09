@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdDelete } from 'react-icons/md';
-
+import { useSelector } from 'react-redux';
 
 import {
   Reservas,
@@ -11,16 +11,21 @@ import {
 } from './styles';
 
 export default function Reserva() {
+
+  const quantidadeReserva = useSelector(state => state.reserva);
+
   return (
     <div>
-      <Titulo>Você solicitou 1 reservas</Titulo>
+      <Titulo>Você solicitou {quantidadeReserva.length} reservas</Titulo>
 
-      <Reservas>
+      {
+    quantidadeReserva.map(reserva => (
+      <Reservas key={reserva.id}>
         <Imagem
-          src='https://sujeitoprogramador.com/wp-content/uploads/2019/12/fernand-noronha.jpg'
-          alt='Fernando de Noronha'
+          src={reserva.image}
+          alt={reserva.title}
         />
-        <strong>Viagem Fernando de Noronha 10 dias</strong>
+        <strong>{reserva.title}</strong>
         <span> Quantidade: 2</span>
         <BotaoLixeira
           type='button'
@@ -29,10 +34,14 @@ export default function Reserva() {
           <MdDelete size={20} color='#191919' />
         </BotaoLixeira>
       </Reservas>
+    ))
+  }
 
-      <footer>
-        <Botao type='button'>Solicitar Reservas</Botao>
-      </footer>
-    </div>
+
+
+  <footer>
+    <Botao type='button'>Solicitar Reservas</Botao>
+  </footer>
+    </div >
   );
 }
