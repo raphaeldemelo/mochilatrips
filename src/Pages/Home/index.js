@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { MdFlightTakeoff } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
+import { addReserva } from '../../store/modules/reserva/actions';
 
 import {
   Container,
@@ -26,10 +27,7 @@ export default function Home() {
   }, []);
 
   function handleAdicionar(viagem) {
-    dispatch({
-      type: 'ADD_RESERVA',
-      viagem
-    })
+    dispatch(addReserva(viagem));
   }
 
   return (
