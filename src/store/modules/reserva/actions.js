@@ -1,6 +1,13 @@
-export function addReserva(viagem) {
+export function addReservaRequest(id) {
     return {
-        type: 'ADD_RESERVA',
+        type: 'ADD_RESERVA_REQUEST',
+        id
+    }
+}
+
+export function addReservaSuccess(viagem) {
+    return {
+        type: 'ADD_RESERVA_SUCCESS',
         viagem
     }
 }

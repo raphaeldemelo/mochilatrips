@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { MdFlightTakeoff } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
-import { addReserva } from '../../store/modules/reserva/actions';
+import { addReservaRequest } from '../../store/modules/reserva/actions';
 
 import {
   Container,
@@ -26,8 +26,8 @@ export default function Home() {
     CarregaApi();
   }, []);
 
-  function handleAdicionar(viagem) {
-    dispatch(addReserva(viagem));
+  function handleAdicionar(id) {
+    dispatch(addReservaRequest(id));
   }
 
   return (
@@ -41,7 +41,7 @@ export default function Home() {
 
             <Botao
               type="button"
-              onClick={() => handleAdicionar(viagem)}
+              onClick={() => handleAdicionar(viagem.id)}
             >
               <div>
                 <MdFlightTakeoff size={16} color='#fff' />
