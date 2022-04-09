@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { MdFlightTakeoff } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 
 import {
   Container,
@@ -13,6 +14,7 @@ import {
 
 export default function Home() {
 
+  const dispatch = useDispatch();
   const [viagens, setViagens] = useState([]);
 
   useEffect(() => {
@@ -22,6 +24,13 @@ export default function Home() {
     }
     CarregaApi();
   }, []);
+
+  function handleAdicionar(viagem) {
+    dispatch({
+      type: 'ADD_RESERVA',
+      viagem
+    })
+  }
 
   return (
     <Container>
@@ -34,7 +43,7 @@ export default function Home() {
 
             <Botao
               type="button"
-              onClick={() => { }}
+              onClick={() => handleAdicionar(viagem)}
             >
               <div>
                 <MdFlightTakeoff size={16} color='#fff' />

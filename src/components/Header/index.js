@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg'
+import { useSelector } from 'react-redux';
 
 import {
     Container,
@@ -11,6 +12,9 @@ import {
 } from './styles';
 
 export default function Header() {
+
+    const quantidadeReserva = useSelector(state => state.reserva.length)
+
     return (
         <Container>
             <Link to='/'>
@@ -27,7 +31,7 @@ export default function Header() {
             >
                 <AreaContagemReserva>
                     <TextoReserva>Minhas Reservas</TextoReserva>
-                    <ContagemReserva>3 reservas</ContagemReserva>
+                    <ContagemReserva>{quantidadeReserva} reservas</ContagemReserva>
                 </AreaContagemReserva>
             </Link>
         </Container>
