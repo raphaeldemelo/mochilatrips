@@ -32,3 +32,20 @@ border-radius: 4px;
 margin-top: 10px;
 font-weight: bold;
 `;
+
+export const AreaQuantidade = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`;
+
+export const BotaoQuantidade = styled.button`
+border: 0;
+background: #fff;
+`;
+
+export const Input = styled.input`
+text-align: center;
+border: 0;
+width: 10%;
+`;

@@ -11,3 +11,11 @@ export function removeReserva(id) {
         id,
     }
 }
+
+export function updateAmountReserva(id, amount) {
+    return {
+        type: 'UPDATE_RESERVA',
+        id,
+        amount,
+    }
+}

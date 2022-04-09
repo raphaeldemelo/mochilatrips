@@ -1,7 +1,7 @@
 import React from 'react';
-import { MdDelete } from 'react-icons/md';
+import { MdDelete, MdAddCircle, MdRemoveCircle } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeReserva } from '../../store/modules/reserva/actions';
+import { removeReserva, updateAmountReserva } from '../../store/modules/reserva/actions';
 
 import {
   Reservas,
@@ -9,6 +9,9 @@ import {
   Titulo,
   BotaoLixeira,
   Botao,
+  AreaQuantidade,
+  BotaoQuantidade,
+  Input,
 } from './styles';
 
 export default function Reserva() {
@@ -18,6 +21,14 @@ export default function Reserva() {
 
   function handleDelete(id) {
     dispatch(removeReserva(id));
+  }
+
+  function decrementAmount(viagem) {
+    dispatch(updateAmountReserva(viagem.id, viagem.amount - 1));
+  }
+
+  function incrementAmount(viagem) {
+    dispatch(updateAmountReserva(viagem.id, viagem.amount + 1));
   }
 
   return (
@@ -32,7 +43,20 @@ export default function Reserva() {
               alt={reserva.title}
             />
             <strong>{reserva.title}</strong>
-            <span> Quantidade: {reserva.amount}</span>
+
+            <AreaQuantidade>
+              <BotaoQuantidade type='button' onClick={() => decrementAmount(reserva)}>
+                <MdRemoveCircle size={25} color='#191919' />
+              </BotaoQuantidade>
+
+              <Input type='text' readOnly value={reserva.amount} />
+
+              <BotaoQuantidade type='button' onClick={() => incrementAmount(reserva)}>
+                <MdAddCircle size={25} color='#191919' />
+              </BotaoQuantidade>
+            </AreaQuantidade>
+
+
             <BotaoLixeira
               type='button'
               onClick={() => handleDelete(reserva.id)}
