@@ -19,11 +19,7 @@ export default function reserva(state = [], action) {
                 }
             });
 
-        case 'UPDATE_RESERVA': {
-
-            if (action.amount <= 0) {
-                return state;
-            }
+        case 'UPDATE_RESERVA_SUCCESS': {
 
             return produce(state, draft => {
                 const viagemIndex = draft.findIndex(viagem => viagem.id === action.id);
