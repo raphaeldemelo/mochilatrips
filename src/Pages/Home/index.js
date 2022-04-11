@@ -13,7 +13,7 @@ import {
   BotaoTexto,
 } from './styles';
 
-export default function Home() {
+export default function Home({ history }) {
 
   const dispatch = useDispatch();
   const [viagens, setViagens] = useState([]);
@@ -28,6 +28,8 @@ export default function Home() {
 
   function handleAdicionar(id) {
     dispatch(addReservaRequest(id));
+
+ 
   }
 
   return (
